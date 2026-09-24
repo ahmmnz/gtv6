@@ -3,7 +3,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,32 +13,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(40, 40, 40, 40);
+        layout.setPadding(40,40,40,40);
         TextView title = new TextView(this);
-        title.setText("GTV Kumanda v2.1\nSes: " + vol + " Kanal: " + ch);
-        title.setTextSize(22);
+        title.setTextSize(20);
+        title.setText("GTV Kumanda - Ses: " + vol + " Kanal: " + ch);
         layout.addView(title);
-        Button volUp = new Button(this);
-        volUp.setText("Ses +");
-        volUp.setOnClickListener(v -> { if (vol < 100) vol++; title.setText("Ses: " + vol + " Kanal: " + ch); });
-        layout.addView(volUp);
-        Button volDown = new Button(this);
-        volDown.setText("Ses -");
-        volDown.setOnClickListener(v -> { if (vol > 0) vol--; title.setText("Ses: " + vol + " Kanal: " + ch); });
-        layout.addView(volDown);
-        Button chUp = new Button(this);
-        chUp.setText("Kanal +");
-        chUp.setOnClickListener(v -> { ch++; title.setText("Ses: " + vol + " Kanal: " + ch); });
-        layout.addView(chUp);
-        Button chDown = new Button(this);
-        chDown.setText("Kanal -");
-        chDown.setOnClickListener(v -> { if (ch > 1) ch--; title.setText("Ses: " + vol + " Kanal: " + ch); });
-        layout.addView(chDown);
-        for (int i = 0; i <= 9; i++) {
+        Button b1 = new Button(this); b1.setText("Ses +");
+        b1.setOnClickListener(v->{ if(vol<100) vol++; title.setText("Ses: "+vol+" Kanal: "+ch); });
+        layout.addView(b1);
+        Button b2 = new Button(this); b2.setText("Ses -");
+        b2.setOnClickListener(v->{ if(vol>0) vol--; title.setText("Ses: "+vol+" Kanal: "+ch); });
+        layout.addView(b2);
+        Button b3 = new Button(this); b3.setText("Kanal +");
+        b3.setOnClickListener(v->{ ch++; title.setText("Ses: "+vol+" Kanal: "+ch); });
+        layout.addView(b3);
+        Button b4 = new Button(this); b4.setText("Kanal -");
+        b4.setOnClickListener(v->{ if(ch>1) ch--; title.setText("Ses: "+vol+" Kanal: "+ch); });
+        layout.addView(b4);
+        for(int i=0;i<=9;i++){
             Button b = new Button(this);
             b.setText(String.valueOf(i));
-            int num = i;
-            b.setOnClickListener(v -> Toast.makeText(this, "Kanal " + num, Toast.LENGTH_SHORT).show());
             layout.addView(b);
         }
         setContentView(layout);

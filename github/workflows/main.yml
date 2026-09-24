@@ -5,8 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: List files
-        run: ls -R
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
@@ -17,5 +15,5 @@ jobs:
       - run: gradle :app:assembleRelease --stacktrace
       - uses: actions/upload-artifact@v4
         with:
-          name: Google-TV-Kumanda-REAL-APK-CALISAN
+          name: Google-TV-Kumanda-REAL-APK
           path: app/build/outputs/apk/release/*.apk
